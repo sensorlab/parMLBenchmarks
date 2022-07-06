@@ -23,7 +23,7 @@ from pyspark.sql.functions import col
 # In[2]:
 
 
-data_amount = 50000
+data_amount = 25000
 train_amount = int(data_amount * 0.8)
 test_amount = int(data_amount * 0.2)
 
@@ -82,7 +82,7 @@ data_test_2 = assembler.transform(data_test)
 for i in range(5):
     start_time = time.time()
 
-    algo = DecisionTreeClassifier(featuresCol="features", labelCol="_c0", maxDepth=5)
+    algo = DecisionTreeClassifier(featuresCol="features", labelCol="_c0")
     model = algo.fit(data_train_2)
 
     predictions = model.transform(data_test_2)
@@ -100,7 +100,7 @@ for i in range(5):
 
 
 spark.stop()
-def notification(frequency=200, length=1):
+def notification(frequency=200, length=5):
     global sound
     import IPython.display as ipd
     import numpy as np 

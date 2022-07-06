@@ -16,7 +16,7 @@ from sklearn.metrics import classification_report
 # In[2]:
 
 
-data_amount = 50000
+data_amount = 250000
 train_amount = int(data_amount*0.8)
 test_amount = int(data_amount*0.2)
 
@@ -33,16 +33,6 @@ data = pd.read_csv("C:/Users/Filip/Desktop/zasluzbo/EMNIST/emnist-digits-train.c
 arr_train = data.to_numpy()
 arr_train  = np.concatenate((arr_train,arr_train),axis=0)
 
-
-# In[ ]:
-
-
-arr_train = arr_train.astype("ushort")
-
-
-# In[ ]:
-
-
 arr_test_label = arr_train[0:train_amount, 0]
 arr_test_value = arr_train[0:train_amount, 1:]
 
@@ -57,7 +47,7 @@ arr_train_value = arr_train[train_amount:train_amount+test_amount, 1:]
 
 for i in range(5):
     start_time = time.time()
-    clf = DecisionTreeClassifier(max_depth=5)
+    clf = DecisionTreeClassifier()
     clf.fit(arr_train_value, arr_train_label)
     predictions = clf.predict(arr_test_value)
     print(classification_report(arr_test_label, predictions))
@@ -69,7 +59,7 @@ for i in range(5):
 # In[ ]:
 
 
-def notification(frequency=200, length=1):
+def notification(frequency=200, length=5):
     global sound
     import IPython.display as ipd
     import numpy as np 

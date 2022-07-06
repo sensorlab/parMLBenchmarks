@@ -23,7 +23,7 @@ threads = 1
 workers = 8
 mem_limit = '1.25G'
 
-data_amount = 50000
+data_amount = 250000
 train_amount = int(data_amount * 0.8)
 test_amount =int(data_amount * 0.2)
 
@@ -37,6 +37,12 @@ print(test_amount)
 client = Client(threads_per_worker=threads,
                 n_workers=workers, memory_limit=mem_limit)
 client
+
+
+# In[4]:
+
+
+#client.close()
 
 
 # # SETUP DATA
@@ -95,7 +101,7 @@ for i in range(5):
 
 
 client.close()
-def notification(frequency=200, length=1):
+def notification(frequency=200, length=5):
     global sound
     import IPython.display as ipd
     import numpy as np 
@@ -104,4 +110,10 @@ def notification(frequency=200, length=1):
     return sound
 
 notification()
+
+
+# In[ ]:
+
+
+#client.close()
 
